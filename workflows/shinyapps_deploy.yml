@@ -1,0 +1,29 @@
+name: methylr-registration-form
+on:
+    push:
+        branches:
+            - main
+jobs:
+  test:
+      name: shinyio deployment
+      runs-on: ubuntu-latest
+      steps:
+      - uses: r-lib/actions/setup-r@v2-branch
+      - name: Install rsconnect
+        run: |
+          sudo apt-get install -y libcurl4-openssl-dev
+          R -e 'install.packages("curl")' 
+          R -e 'install.packages("rsconnect")'
+          R -e 'install.packages("shiny")'  
+          R -e 'install.packages("httpuv")'
+          R -e 'install.packages("rmarkdown")'
+          R -e 'install.packages("knitr")'
+          R -e 'install.packages("jsonlite")'
+          R -e 'install.packages("googlesheets4")'
+          R -e 'install.packages("shinyvalidate")'
+          R -e 'install.packages("shinyjs")'
+      - uses: actions/checkout@v4
+      - name: Connect shiny server
+        run: Rscript -e "rsconnect::setAccountInfo(name='methylr', token='441BD6C1E933F62FB4D5DE1D5610A371', secret='MfF3EkJDZMEnsg7aUFFkT+Z1Wxmcu1ykWfS+0lVj')"
+      - name: deploy app 
+        run: Rscript -e "rsconnect::deployApp(appName = 'methylr-registration-form')" 
