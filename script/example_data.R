@@ -5,8 +5,8 @@ library(MASS) # For multivariate normal simulation
 
 # Set parameters
 set.seed(123)  # For reproducibility
-nGenes <- 5000 # Number of genes
-nSamples <- 100 # Number of samples
+nGenes <- 500 # Number of genes
+nSamples <- 30 # Number of samples
 
 # Simulate RNA-seq data
 simulateRNAseq <- function(nGenes, nSamples, nClusters = 5) {

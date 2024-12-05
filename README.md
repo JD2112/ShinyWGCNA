@@ -6,6 +6,16 @@ This Shiny app provides a user-friendly interface for performing Weighted Gene C
 RNA-seq Data: Upload a CSV file with genes as columns and samples as rows. The first column should contain sample names.
 DNA Methylation Data: Upload a CSV file with the same structure as the RNA-seq data, containing methylation values.
 
+## How to run locally
+```
+R # laod R >= 4.3.1
+library(shiny)
+shiny::runApp("app.R")
+```
+
+### Online webserver
+
+
 ## Parameters
 
 ### WGCNA Parameters

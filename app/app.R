@@ -135,7 +135,7 @@ ui <- page_fluid(
       ),
       div(
         class = "footer-section",
-        a("Documentation", href = "https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/", target = "_blank")
+        a("GitHub", href = "https://github.com/JD2112/ShinyWGCNA", target = "_blank")
       ),
       div(
         class = "footer-section footer-right",

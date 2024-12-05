@@ -1,0 +1,10 @@
+name: ShinyWGCNA
+title:
+username: jyotirmoydas
+account: jyotirmoydas
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13529716
+bundleId: 9467219
+url: https://jyotirmoydas.shinyapps.io/ShinyWGCNA/
+version: 1
