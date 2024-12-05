@@ -1,6 +1,11 @@
 # Shiny for WGCNA
+(Under active development)
 
-This Shiny app provides a user-friendly interface for performing Weighted Gene Co-expression Network Analysis (WGCNA) on RNA-seq and DNA methylation data. It allows for data upload, parameter customization, visualization of results, and exporting of analysis outputs.
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14282944.svg)](https://doi.org/10.5281/zenodo.14282944)
+[![GitHub Invite Collaborators](https://img.shields.io/badge/Invite-Collaborators-blue?style=for-the-badge&logo=github)](https://github.com/JD2112/ShinyWGCNA/settings/access)
+
+This Shiny app provides a user-friendly interface for performing **Weighted Gene Co-expression Network Analysis (WGCNA)** on **RNA-seq/Microarray** and **DNA methylation** (Array/Sequencing) data. It allows for data upload, parameter customization, visualization of results, and exporting of analysis outputs.
 
 ## Input Data
 RNA-seq Data: Upload a CSV file with genes as columns and samples as rows. The first column should contain sample names.
@@ -15,6 +20,7 @@ shiny::runApp("app.R")
 
 ### Online webserver
 
+[https://jyotirmoydas.shinyapps.io/ShinyWGCNA/](https://jyotirmoydas.shinyapps.io/ShinyWGCNA/)
 
 ## Parameters
 
@@ -87,3 +93,17 @@ The app provides detailed debug information, including:
 ## References
 Langfelder, P., & Horvath, S. (2008). WGCNA: an R package for weighted correlation network analysis. BMC bioinformatics, 9(1), 559.
 For more information on WGCNA, visit: https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/
+
+## Credits
+- Main Author: 
+    - Jyotirmoy Das ([@JD2112](https://github.com/JD2112))
+
+- Collaborators: ()
+
+## Citation
+
+Das, J. (2024). ShinyWGCNA. Zenodo. https://doi.org/10.5281/zenodo.14282944
+
+## Acknowledgement
+
+We would like to acknowledge the **Core Facility, Faculty of Medicine and Health Sciences, Linköping University, Linköping, Sweden** and **Clinical Genomics Linköping, Science for Life Laboratory, Sweden** for their support.

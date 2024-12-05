@@ -4,8 +4,8 @@ authors:
   - family-names: Das
     given-names: Jyotirmoy
     orcid: https://orcid.org/0000-0002-5649-4658
-title: "Image-Processing-MATLAB"
-version: 0.1.1
+title: "ShinyWGCNA"
+version: 1.0
 identifiers:
   - type: doi
     value: 10.5281/zenodo.11104350
