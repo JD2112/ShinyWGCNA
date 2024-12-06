@@ -24,6 +24,6 @@ jobs:
           R -e 'install.packages("shinyjs")'
       - uses: actions/checkout@v4
       - name: Connect shiny server
-        run: Rscript -e "rsconnect::setAccountInfo(name='methylr', token='441BD6C1E933F62FB4D5DE1D5610A371', secret='MfF3EkJDZMEnsg7aUFFkT+Z1Wxmcu1ykWfS+0lVj')"
+        run: Rscript -e "rsconnect::setAccountInfo(name='methylr', token=${{ secrets.SHINYIO_TOKEN }}, secret=${{ secrets.SHINYIO_SECRET }})"
       - name: deploy app 
-        run: Rscript -e "rsconnect::deployApp(appName = 'methylr-registration-form')" 
+        run: Rscript -e "rsconnect::deployApp(appName = 'ShinyWGCNA')" 

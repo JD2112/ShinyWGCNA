@@ -131,7 +131,7 @@ ui <- page_fluid(
       class = "container footer-content",
       div(
         class = "footer-section footer-left",
-        "©2024, Jyotirmoy Das"
+        "©2024, Jyotirmoy Das, Bioinformactics Core Facility, Linköping University"
       ),
       div(
         class = "footer-section",
@@ -139,7 +139,7 @@ ui <- page_fluid(
       ),
       div(
         class = "footer-section footer-right",
-        "Version 1.0"
+        "Version 1.1"
       )
     )
   )
