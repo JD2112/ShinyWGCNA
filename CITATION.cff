@@ -1,0 +1,9 @@
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: Das
+  given-names: Jyotirmoy
+orcid: https://orcid.org/0000-0002-5649-4658
+title: ShinyWGCNA
+version: v1.1
+date-released: 2024-12-05

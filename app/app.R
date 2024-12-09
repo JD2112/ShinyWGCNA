@@ -1,0 +1,16 @@
+library(shiny)
+library(bslib)
+library(WGCNA)
+library(pheatmap)
+library(ComplexHeatmap)
+library(shinyjs)
+library(plotly)
+library(doParallel)
+library(DT)
+
+source("global.R")
+source("helpers.R")
+source("ui/ui_main.R")
+source("server/server_main.R")
+
+shinyApp(ui = ui, server = server)

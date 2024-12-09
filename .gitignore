@@ -1,0 +1,7 @@
+*.RData
+ui.R
+.Rhistory
+scripts/
+rsconnect/
+data/*
+script/
