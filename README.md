@@ -22,6 +22,8 @@ shiny::runApp("app.R")
 
 [https://jyotirmoydas.shinyapps.io/ShinyWGCNA/](https://jyotirmoydas.shinyapps.io/ShinyWGCNA/)
 
+**PLEASE NOTE** Datasets with larger dimensions (e.g., 1000x100) may fail on the server,because it is only running on 1GB RAM allocation.
+
 ## Parameters
 
 ### WGCNA Parameters
