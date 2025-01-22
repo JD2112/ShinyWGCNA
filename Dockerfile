@@ -59,6 +59,7 @@ COPY app/ /srv/shiny-server/
 
 # Change owner of /srv/shiny-server
 RUN chown -R shiny:shiny /srv/shiny-server/
+RUN chown -R shiny:shiny /var/lib/shiny-server/
 
 # Set the working directory
 WORKDIR /srv/shiny-server
