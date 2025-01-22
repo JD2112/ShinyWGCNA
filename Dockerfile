@@ -60,6 +60,7 @@ RUN chown -R shiny:shiny /var/lib/shiny-server/
 WORKDIR /srv/shiny-server
 
 # Expose the application port
+USER shiny
 EXPOSE 3838
 
 # Run the Shiny app
