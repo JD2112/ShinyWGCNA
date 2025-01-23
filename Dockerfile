@@ -1,65 +1,53 @@
 # Base image
 FROM rocker/shiny:4.4.1
-LABEL   authors = "Jyotirmoy Das" \
-        description = "Docker image for ShinyWGCNA"
 
-# Avoid prompts from apt
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Set environment variables
-ENV LC_ALL=C.UTF-8
-ENV LANG=C.UTF-8
-ENV R_LIBS_USER=/usr/local/lib/R/site-library
+# Set labels
+LABEL authors="Jyotirmoy Das" \
+      description="Docker image for ShinyWGCNA"
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-    software-properties-common \
-    dirmngr \
-    wget \
-    libcurl4-gnutls-dev \
-    libxml2-dev \
+    build-essential \
+    libcurl4-openssl-dev \
     libssl-dev \
-    libpng-dev \
-    libhdf5-dev \
+    libxml2-dev \
     libgit2-dev \
-    gdebi-core \
-    libgfortran5 \
-    liblapack-dev \
-    libblas-dev \
-    libcairo2-dev \
-    libxt-dev
-
-# General updates
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y git libxml2-dev libmagick++-dev libssl-dev libharfbuzz-dev libfribidi-dev && \
+    libmagick++-dev \
+    libharfbuzz-dev \
+    libfribidi-dev \
+    cmake \
+    gcc \
+    g++ \
+    make \
+    git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Install R packages
-RUN R -e "install.packages(c('shiny', 'shinydashboard', 'shinyjs', 'DT', 'plotly', 'ggplot2', 'reshape2', 'RColorBrewer', 'pheatmap', 'heatmaply', 'dplyr', 'tidyr', 'stringr', 'purrr', 'readr', 'tibble', 'magrittr'), repos='http://cran.rstudio.com/', dependencies=TRUE)"
+# Set environment variables to disable -Werror=format-security
+ENV CFLAGS="-g -O2 -Wformat -Wno-error=format-security"
+ENV CXXFLAGS="-g -O2 -Wformat -Wno-error=format-security"
+ENV PKG_CFLAGS="-Wno-error=format-security"
+ENV PKG_CXXFLAGS="-Wno-error=format-security"
 
-# Install Bioconductor and required packages
-RUN R -e "if (!requireNamespace('BiocManager', quietly = TRUE)) install.packages('BiocManager'); BiocManager::install(c('impute', 'preprocessCore', 'GO.db', 'AnnotationDbi', 'org.Hs.eg.db', 'ComplexHeatmap'))"
+# Install BiocManager and core Bioconductor packages
+RUN R -e "install.packages('BiocManager', repos='http://cran.rstudio.com/')" && \
+    R -e "Sys.setenv(MAKEFLAGS='-j4'); \
+          options(warn = 2); \
+          BiocManager::install(c('S4Vectors', 'IRanges', 'XVector'), \
+          version = '3.20', \
+          configure.args = c('--disable-warnings-as-errors', '--no-staged-install'), \
+          update = TRUE, ask = FALSE)"
 
-# Install WGCNA and verify installation
-RUN R -e "install.packages('WGCNA', repos='http://cran.rstudio.com/', dependencies=TRUE)" && \
-    R -e "if (!require('WGCNA')) stop('WGCNA package not installed successfully')"
+# Install and configure renv
+RUN Rscript -e 'install.packages("renv", repos="http://cran.rstudio.com/")'
+COPY renv.lock /srv/shiny-server/renv.lock
+WORKDIR /srv/shiny-server
+RUN Rscript -e 'renv::restore()'
 
-# List installed packages
-RUN R -e "installed.packages()[,c('Package', 'Version')]"
-
-# Copy the application files into the image
+# Copy Shiny app files
 COPY app/ /srv/shiny-server/
 
-# Change owner of /srv/shiny-server
-RUN chown -R shiny:shiny /srv/shiny-server/
-RUN chown -R shiny:shiny /var/lib/shiny-server/
-
-# Set the working directory
-WORKDIR /srv/shiny-server
-
-# Expose the application port
+# Expose port 3838 for the Shiny app
 USER shiny
 EXPOSE 3838
 

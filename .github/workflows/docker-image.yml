@@ -38,4 +38,4 @@ jobs:
           push: true
           tags: |
             ${{ steps.meta.outputs.tags }} 
-            jd21/shinywgcna:latest
+            jd21/shinywgcna:latest            
