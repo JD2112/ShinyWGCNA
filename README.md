@@ -8,8 +8,8 @@
 This Shiny app provides a user-friendly interface for performing **Weighted Gene Co-expression Network Analysis (WGCNA)** on **RNA-seq/Microarray** and **DNA methylation** (Array/Sequencing) data. It allows for data upload, parameter customization, visualization of results, and exporting of analysis outputs.
 
 ## Input Data
-RNA-seq Data: Upload a CSV file with genes as columns and samples as rows. The first column should contain sample names.
-DNA Methylation Data: Upload a CSV file with the same structure as the RNA-seq data, containing methylation values.
+**RNA-seq Data:** Upload a ***CSV*** file with genes as columns and samples as rows. The first column should contain sample names.
+**DNA Methylation Data:** Upload a ***CSV*** file with the same structure as the RNA-seq data, containing methylation values.
 
 ## How to run locally
 ```
@@ -21,6 +21,7 @@ shiny::runApp("app.R")
 ### Online webserver
 
 [https://jyotirmoydas.shinyapps.io/ShinyWGCNA/](https://jyotirmoydas.shinyapps.io/ShinyWGCNA/)
+[https://shinywgcna.serve.scilifelab.se/app/shinywgcna](https://shinywgcna.serve.scilifelab.se/app/shinywgcna)
 
 **PLEASE NOTE** Datasets with larger dimensions (e.g., 1000x100) may fail on the server,because it is only running on 1GB RAM allocation. Please use the Docker container in local machine
 
@@ -31,31 +32,31 @@ docker run --rm -p 3838:3838 jd21/shinywgcna:latest
 ## Parameters
 
 ### WGCNA Parameters
-Soft Threshold Power:
-Range: 1-20
-Default: 6
-Description: Determines the scale-free topology of the network. Higher values lead to more stringent co-expression relationships.
+**Soft Threshold Power:**
+- **Range:** 1-20
+- **Default:** 6
+- **Description:** Determines the scale-free topology of the network. Higher values lead to more stringent co-expression relationships.
 
 ### Minimum Module Size:
-Range: 10-100
-Default: 30
-Description: The minimum number of genes required to form a module.
+- **Range:** 10-100
+- **Default:** 30
+- **Description:** The minimum number of genes required to form a module.
 
 ### Merge Cut Height:
-Range: 0.1-1
-Step: 0.05
-Default: 0.25
-Description: The height at which the dendrogram tree is cut to merge similar modules. Lower values result in more modules.
+**Range:** 0.1-1
+**Step:** 0.05
+**Default:** 0.25
+**Description:** The height at which the dendrogram tree is cut to merge similar modules. Lower values result in more modules.
 
 ### Network Type:
-Options: "unsigned", "signed", "signed hybrid"
-Default: "unsigned"
-Description: Determines how the correlation between genes is treated in the network construction.
+**Options:** "unsigned", "signed", "signed hybrid"
+**Default:** "unsigned"
+**Description:** Determines how the correlation between genes is treated in the network construction.
 
 ### Number of Cores:
-Range: 1-16 (adjust based on your system's capabilities)
-Default: 1
-Description: Number of CPU cores to use for parallel processing. Higher values can speed up calculations for large datasets.
+**Range:** 1-16 (adjust based on your system's capabilities)
+**Default:** 1
+**Description:** Number of CPU cores to use for parallel processing. Higher values can speed up calculations for large datasets.
 
 ## Functionality
 ### Analysis
@@ -63,18 +64,18 @@ Click "Run WGCNA" to start the analysis after setting parameters and uploading d
 The app will validate input data, perform WGCNA analysis, and generate visualizations.
 
 ### Visualizations
-- Soft Threshold Plot: Shows the scale-free topology fit and mean connectivity for different soft threshold powers.
-- Network Dendrogram: Displays the hierarchical clustering of genes and module colors.
-- Module-Trait Correlation: Heatmap showing correlations between module eigengenes and traits (methylation data).
-- Gene Dendrogram: Detailed dendrogram of genes with module color assignments.
-- Network Heatmap: Visualizes the Topological Overlap Matrix (TOM) of the gene network.
-- Scatter Plot: Interactive plot of module eigengene vs. average methylation for selected modules.
+- **Soft Threshold Plot**: Shows the scale-free topology fit and mean connectivity for different soft threshold powers.
+- **Network Dendrogram:** Displays the hierarchical clustering of genes and module colors.
+- **Module-Trait Correlation:** Heatmap showing correlations between module eigengenes and traits (methylation data).
+- **Gene Dendrogram:** Detailed dendrogram of genes with module color assignments.
+- **Network Heatmap:** Visualizes the Topological Overlap Matrix (TOM) of the gene network.
+- **Scatter Plot:** Interactive plot of module eigengene vs. average methylation for selected modules.
 
 ### Export Options
-- Download Module Genes: CSV file containing gene-to-module assignments.
-- Download Network Data: RData file containing the Topological Overlap Matrix.
-- Download Module Details: CSV file with detailed module membership information.
-- Download for Cytoscape: Text file compatible with Cytoscape for external network visualization.
+- **Download Module Genes:** CSV file containing gene-to-module assignments.
+- **Download Network Data:** RData file containing the Topological Overlap Matrix.
+- **Download Module Details:** CSV file with detailed module membership information.
+- **Download for Cytoscape:** Text file compatible with Cytoscape for external network visualization.
 
 ### Debug Information
 The app provides detailed debug information, including:

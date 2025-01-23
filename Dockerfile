@@ -47,8 +47,15 @@ RUN Rscript -e 'renv::restore()'
 # Copy Shiny app files
 COPY app/ /srv/shiny-server/
 
-# Expose port 3838 for the Shiny app
+# Create necessary directories and set permissions
+RUN mkdir -p /srv/shiny-server/app_cache && \
+    chown -R shiny:shiny /srv/shiny-server && \
+    chmod -R 755 /srv/shiny-server
+
+# Switch to the shiny user
 USER shiny
+
+# Expose port 3838 for the Shiny app
 EXPOSE 3838
 
 # Run the Shiny app
