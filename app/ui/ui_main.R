@@ -125,22 +125,22 @@ ui <- page_fluid(
     )
   ),
   
+div(
+  class = "footer mt-auto py-3 bg-light",
   div(
-    class = "footer mt-auto py-3 bg-light",
+    class = "container footer-content",
     div(
-      class = "container footer-content",
-      div(
-        class = "footer-section footer-left",
-        "©2024, Jyotirmoy Das, Bioinformactics Unit, Core Facility & Clinical Genomics Linköping, Linköping University"
-      ),
-      div(
-        class = "footer-section",
-        a("GitHub", href = "https://github.com/JD2112/ShinyWGCNA", target = "_blank")
-      ),
-      div(
-        class = "footer-section footer-right",
-        "Version 1.1"
-      )
+      class = "footer-section footer-left",
+      paste0("©", format(Sys.Date(), "%Y"), ", Jyotirmoy Das, Bioinformactics Unit, Core Facility & Clinical Genomics Linköping, Linköping University")
+    ),
+    div(
+      class = "footer-section",
+      a("GitHub", href = "https://github.com/JD2112/ShinyWGCNA", target = "_blank")
+    ),
+    div(
+      class = "footer-section footer-right",
+      "Version 1.1"
     )
   )
+)
 )

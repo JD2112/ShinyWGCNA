@@ -20,7 +20,6 @@ shiny::runApp("app.R")
 
 ### Online webserver
 
-[https://jyotirmoydas.shinyapps.io/ShinyWGCNA/](https://jyotirmoydas.shinyapps.io/ShinyWGCNA/)
 [https://shinywgcna.serve.scilifelab.se/app/shinywgcna](https://shinywgcna.serve.scilifelab.se/app/shinywgcna)
 
 **PLEASE NOTE** Datasets with larger dimensions (e.g., 1000x100) may fail on the server,because it is only running on 1GB RAM allocation. Please use the Docker container in local machine
